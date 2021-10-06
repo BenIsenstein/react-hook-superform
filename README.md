@@ -3,11 +3,11 @@
 
 ---
 
-## NOTE
+## NOTE - NOT CURRENTLY STABLE
 
 Hello devs everywhere! As I work out the initial bugs in my first package, I'll be updating the oldest stable release here.
 
-The most stable release is: **1.0.3**
+The most stable release is: **no stable release at this time**
 
 ## Features
 

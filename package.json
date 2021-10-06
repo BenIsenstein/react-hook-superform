@@ -18,7 +18,8 @@
     "form",
     "superform"
   ],
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "files": ["dist"],
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
@@ -26,9 +27,12 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "rollup": "^1.32.1",
     "web-vitals": "^1.1.2"
   },
   "dependencies": {
@@ -40,9 +44,13 @@
     "styled-components": "^5.3.1",
     "styled-icons": "^10.43.0"
   },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "distribute": "rm -rf dist && mkdir dist && babel src/lib -d dist --copy-files"
