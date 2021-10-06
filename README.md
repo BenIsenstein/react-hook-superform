@@ -3,6 +3,12 @@
 
 ---
 
+## NOTE
+
+Hello devs everywhere! As I work out the initial bugs in my first package, I'll be updating the oldest stable release here.
+
+The most stable release is: **1.0.3**
+
 ## Features
 
 - Access to every hook provided by [`useForm`](https://react-hook-form.com/api/useform/)
