@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 //import UserContext from '../../UserContext'
-import { PencilIcon, Form, FormSectionTitle, Button, FlexSection } from '../resources'
-import { useIsDateInput } from '../functions'
+import { PencilIcon, Form, FormSectionTitle, Button, FlexSection } from './resources'
+import { useIsDateInput } from './functions'
 import { GroupOfInputs } from '.'
 
 /* 

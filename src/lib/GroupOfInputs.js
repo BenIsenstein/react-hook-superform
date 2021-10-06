@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react'
-import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from '../resources'
-import { isDateInput } from '../functions'
+import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from './resources'
+import { isDateInput } from './functions'
 //import CustomItemModal, { DeleteItemModal, EditItemModal } from '../Modals/CustomItemModal'
 import { ComplexInput } from '.'
 

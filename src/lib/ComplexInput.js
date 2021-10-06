@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { Label, Textarea, Input, FlexSection, Error } from '../resources'
+import { Label, Textarea, Input, FlexSection, Error } from './resources'
 import Skeleton from 'react-loading-skeleton'
 
 /* 

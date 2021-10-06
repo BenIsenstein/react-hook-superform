@@ -1,8 +1,8 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
-import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from '../resources';
-import { isDateInput } from '../functions'; //import CustomItemModal, { DeleteItemModal, EditItemModal } from '../Modals/CustomItemModal'
+import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from './resources';
+import { isDateInput } from './functions'; //import CustomItemModal, { DeleteItemModal, EditItemModal } from '../Modals/CustomItemModal'
 
 import { ComplexInput } from '.'; // all props not in the component code are passed to the outside GridSection.
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { GroupOfInputs } from '.';
-import { isValidDate } from '../functions';
+import { isValidDate } from './functions';
 
 const StartAndEndDates = ({
   isCustomComponent,

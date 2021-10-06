@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, FlexSection, EyeIcon, EyeSlashIcon } from '../resources'
+import { Input, FlexSection, EyeIcon, EyeSlashIcon } from './resources'
 
 // you can declare an object of 'wrapperProps' for the outside FlexSection.
 // all other props are passed to the Input element.
