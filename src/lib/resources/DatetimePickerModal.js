@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Button, CalendarIcon, StyledDateTimePicker } from '.'
-import ConfirmModal from './ConfirmModal'
+import { ConfirmModal } from './ConfirmModal'
 import { isValidDate, useConfirmModal } from "../functions"
 
 const DatetimePickerModal = ({ watch, setValue, isAddMode, recurrenceFrequency, isCompleted, name, ...props}) => { 
