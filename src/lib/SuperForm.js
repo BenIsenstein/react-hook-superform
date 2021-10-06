@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 //import UserContext from '../../UserContext'
 import { PencilIcon, Form, FormSectionTitle, Button, FlexSection } from './resources'
-import { useIsDateInput } from './functions'
+import { isDateInput } from './functions'
 import { GroupOfInputs } from '.'
 
 /* 
@@ -108,7 +108,6 @@ const SuperForm = ({
   //const userContext = useContext(UserContext)
   const history = useHistory()
   const goHome = useMemo(() => () => history.push(`./${props.homeUrl || 'home'}`), [history])
-  const isDateInput = useIsDateInput()
   const resetForm = useMemo(() => () => {reset(resetValues); setViewMode('details')}, [reset, resetValues])
   // - - - -  Conditions measuring formMode + viewMode - - - -
   const isAddMode = formMode === 'add'
