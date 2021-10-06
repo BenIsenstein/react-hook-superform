@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-import {fadeIn} from './'
+import {fadeIn} from '.'
 
 const FlexSection = styled.div`
     display: flex;

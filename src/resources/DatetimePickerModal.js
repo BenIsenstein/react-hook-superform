@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { Button, CalendarIcon, StyledDateTimePicker } from '../../common'
+import { Button, CalendarIcon, StyledDateTimePicker } from '.'
 import ConfirmModal from './ConfirmModal'
-import useConfirmModal from './useConfirmModal'
-import { isValidDate, usePossessionDateByOwner, useEntryDetailsCompletion } from "../../functions"
+import { isValidDate, useConfirmModal } from "../functions"
 
 const DatetimePickerModal = ({ watch, setValue, isAddMode, recurrenceFrequency, isCompleted, name, ...props}) => { 
   const { isConfirmModalShowing, toggleConfirmModal } = useConfirmModal()
@@ -24,11 +23,7 @@ const DatetimePickerModal = ({ watch, setValue, isAddMode, recurrenceFrequency, 
     setModalDate(currentValue || new Date())
   }, [currentValue])
 
-  // - - - - - Custom app-specific effects - - - - - - - 
 
-  usePossessionDateByOwner(watch, setValue, isAddMode, name)
-
-  useEntryDetailsCompletion(watch, setValue, name, currentValue, recurrenceFrequency, isCompleted, isValidDate)
   
   const ModalContent = () => <>
     <p>{props.modalTitle}</p>
@@ -50,9 +45,9 @@ const DatetimePickerModal = ({ watch, setValue, isAddMode, recurrenceFrequency, 
       actionOnCancel={()=>{}}
     />
     <Button type='button' noBorder onClick={toggleConfirmModal} {...props}>
-      { props.iconButton ? <CalendarIcon /> : 'Delete Event' }       
+      { props.iconButton ? <CalendarIcon /> : 'Cancel' }       
     </Button>
   </>
 }
 
-export default DatetimePickerModal
+export { DatetimePickerModal }

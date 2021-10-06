@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components'
-import {fadeIn} from './'
-import interpretTheme from '../theme'
+import {fadeIn} from '.'
+import interpretTheme from './theme'
 
 const Button = styled.button.attrs(props => ({
     type: props.type || 'button'

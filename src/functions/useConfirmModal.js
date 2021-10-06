@@ -13,4 +13,4 @@ const useConfirmModal = () => {
   }
 }
 
-export default useConfirmModal
+export { useConfirmModal }

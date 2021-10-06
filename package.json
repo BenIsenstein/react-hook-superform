@@ -3,6 +3,22 @@
   "version": "1.0.1",
   "description": "Intuitive and powerful React package for creating functional forms, FAST.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenIsenstein/react-hook-superform.git"
+  },
+  "homepage": "https://github.com/BenIsenstein/react-hook-superform#readme",
+  "bugs": {
+    "url": "https://github.com/BenIsenstein/react-hook-superform/issues",
+    "email": "ben.isenstein@gmail.com"
+  },
+  "keywords": [
+    "react", 
+    "hook", 
+    "form", 
+    "superform"
+  ],
+  "main": "src/index.js",
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",

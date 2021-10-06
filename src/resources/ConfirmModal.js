@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Button, FlexSection } from '../../common'
+import { Button, FlexSection } from '.'
 
 import './ConfirmModal.css'
 
@@ -51,4 +51,4 @@ const ConfirmModal = ({ isConfirmModalShowing, hideConfirmModal, modalContent, c
   }
 }
 
-export default ConfirmModal
+export { ConfirmModal }
