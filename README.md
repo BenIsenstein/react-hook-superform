@@ -3,11 +3,11 @@
 
 ---
 
-## NOTE - NOT CURRENTLY STABLE
+## NOTE - oldest stable release
 
 Hello devs everywhere! As I work out the initial bugs in my first package, I'll be updating the oldest stable release here.
 
-The most stable release is: **no stable release at this time**
+The oldest stable release is: **1.1.2**
 
 ## Features
 
