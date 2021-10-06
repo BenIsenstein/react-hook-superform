@@ -1,6 +1,6 @@
 {
   "name": "@benisenstein/react-hook-superform",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Intuitive and powerful React package for creating functional forms, FAST.",
   "license": "MIT",
   "repository": {
@@ -19,7 +19,9 @@
     "superform"
   ],
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
