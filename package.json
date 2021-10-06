@@ -1,6 +1,6 @@
 {
   "name": "@benisenstein/react-hook-superform",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Intuitive and powerful React package for creating functional forms, FAST.",
   "license": "MIT",
   "repository": {
@@ -13,9 +13,9 @@
     "email": "ben.isenstein@gmail.com"
   },
   "keywords": [
-    "react", 
-    "hook", 
-    "form", 
+    "react",
+    "hook",
+    "form",
     "superform"
   ],
   "main": "src/index.js",
