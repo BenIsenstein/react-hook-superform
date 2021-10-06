@@ -7,7 +7,7 @@
 
 Hello devs everywhere! As I work out the initial bugs in my first package, I'll be updating the oldest stable release here.
 
-The oldest stable release is: **1.1.2**
+The oldest stable release is: **1.1.3**
 
 ## Features
 
@@ -32,7 +32,7 @@ npm install @benisenstein/react-hook-superform
 ## Quickstart
 
 ```js
-import SuperForm from 'react-hook-superform'
+import { SuperForm } from 'react-hook-superform'
 
 const BasicSubmissionForm = () => {
   const inputs = [{ name: 'username' }, { name: 'password' }, { name: 'email' }]
