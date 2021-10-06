@@ -1,4 +1,7 @@
+src
+examples
 demo
+.babelrc
 webpack.config.js
 public
 .idea

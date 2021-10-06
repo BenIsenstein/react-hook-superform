@@ -1,13 +1,13 @@
-import React, { Fragment, useState, useEffect, useMemo } from 'react'
-import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from './resources'
-import { isDateInput } from '../../functions'
-//import CustomItemModal, { DeleteItemModal, EditItemModal } from '../Modals/CustomItemModal'
-import { ComplexInput } from '.'
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-// all props not in the component code are passed to the outside GridSection.
+import React, { Fragment, useState, useEffect, useMemo } from 'react';
+import { FlexSection, GridSection, Input, Select, Li, Button, AddIcon, StyledDateTimePicker, DatetimePickerModal } from '../resources';
+import { isDateInput } from '../functions'; //import CustomItemModal, { DeleteItemModal, EditItemModal } from '../Modals/CustomItemModal'
+
+import { ComplexInput } from '.'; // all props not in the component code are passed to the outside GridSection.
 
 const GroupOfInputs = ({
-  inputs, 
+  inputs,
   isAddMode,
   isDetailsMode,
   isDetailsView,
@@ -20,7 +20,8 @@ const GroupOfInputs = ({
   errors,
   getValues,
   setResetValues,
-  ...props }) => {
+  ...props
+}) => {
   // - - - - - - hooks/variables - - - - - - - //
   const modeAndView = {
     isAddMode,
@@ -28,7 +29,7 @@ const GroupOfInputs = ({
     isDetailsView,
     isEditView,
     areDetailsLoaded
-  }
+  };
   const formTools = {
     register,
     unregister,
@@ -37,74 +38,49 @@ const GroupOfInputs = ({
     errors,
     getValues,
     setResetValues
-  }
+  };
+  useEffect(() => () => console.log('GroupOfInputs unmounted!'), []); // - - - - - - - RETURN JSX - - - - - - - - //
 
-  useEffect(() => () => console.log('GroupOfInputs unmounted!'), [])
+  return /*#__PURE__*/React.createElement(GridSection, _extends({
+    fullWidth: true
+  }, props), inputs && inputs.map((input, index) => {
+    if (!input) return null;
+    const {
+      name,
+      readOnly
+    } = input; // every input other than date-types
 
-  // - - - - - - - RETURN JSX - - - - - - - - //
-  return <GridSection fullWidth {...props}>
-    {inputs && inputs.map((input, index) => {
-      if (!input) return null
+    if (!isDateInput(name)) return /*#__PURE__*/React.createElement(ComplexInput, _extends({
+      key: index,
+      name: name,
+      readOnly: isDetailsMode ? isDetailsView || readOnly : readOnly
+    }, formTools, modeAndView, input)); // date-type input
 
-      const { name, readOnly } = input
-
-      // every input other than date-types
-      if (!isDateInput(name)) return ( 
-        <ComplexInput 
-          key={index}
-          name={name}
-          readOnly={isDetailsMode ? (isDetailsView || readOnly) : readOnly}
-          {...formTools}
-          {...modeAndView}
-          {...input} 
-        />
-      )
-        
-      // date-type input
-      return (isDetailsMode && isDetailsView) || readOnly
-        ? <ComplexInput 
-          key={index} 
-          name={name}
-          readOnly 
-          {...formTools} 
-          {...modeAndView}
-          {...input}
-        />  
-        : (
-          <FlexSection 
-            key={index} 
-            gridColumn={input.wrapperProps?.gridColumn || "1/-1"} 
-            {...input.wrapperProps} 
-            fullWidth
-          >
-            <ComplexInput  
-              name={name}
-              as={(dateProps) => <StyledDateTimePicker
-                disableCalendar
-                disableClock
-                onChange={e => setValue(name, e)}
-                value={watch(name)}
-              />}    
-              {...formTools}
-              {...modeAndView}
-              {...input}
-            />
-            <DatetimePickerModal  
-              modalTitle={input.modalTitle || "set " + (input.labelText || name)}
-              name={name} 
-              margin="0 0 0 5px"
-              iconButton 
-              {...formTools}
-              {...modeAndView}
-              {...input}
-            />
-          </FlexSection>
-        )
-    })}
-  </GridSection>
-}
-
-// const GroupOfCheckboxes = ({
+    return isDetailsMode && isDetailsView || readOnly ? /*#__PURE__*/React.createElement(ComplexInput, _extends({
+      key: index,
+      name: name,
+      readOnly: true
+    }, formTools, modeAndView, input)) : /*#__PURE__*/React.createElement(FlexSection, _extends({
+      key: index,
+      gridColumn: input.wrapperProps?.gridColumn || "1/-1"
+    }, input.wrapperProps, {
+      fullWidth: true
+    }), /*#__PURE__*/React.createElement(ComplexInput, _extends({
+      name: name,
+      as: dateProps => /*#__PURE__*/React.createElement(StyledDateTimePicker, {
+        disableCalendar: true,
+        disableClock: true,
+        onChange: e => setValue(name, e),
+        value: watch(name)
+      })
+    }, formTools, modeAndView, input)), /*#__PURE__*/React.createElement(DatetimePickerModal, _extends({
+      modalTitle: input.modalTitle || "set " + (input.labelText || name),
+      name: name,
+      margin: "0 0 0 5px",
+      iconButton: true
+    }, formTools, modeAndView, input)));
+  }));
+}; // const GroupOfCheckboxes = ({
 //   // GroupOfCheckboxes needs to have 'isCustomComponent' set to true
 //   inputs, 
 //   detailsUrl,
@@ -142,74 +118,53 @@ const GroupOfInputs = ({
 //   }
 //   const isAddingOrEditing = (isAddMode || isEditView)
 //   const makeItemName = (name) => name.split('.')[1]
-
 //   const [customItems, setCustomItems] = useState([])
 //   const allItems = useMemo(() => [...inputs, ...customItems], [inputs, customItems])
-  
 //   // useEffect(() => console.log("customItems: ", customItems), [customItems])
 //   // useEffect(() => console.log("allItems: ", allItems), [allItems])
-
 //   //const allDefaultTasks = useGetAllInfo()
 //   const [allCustomTasks, setAllCustomTasks] = useState([])
-
 //   // useEffect(() => console.log("allDefaultTasks: ", allDefaultTasks), [allDefaultTasks])
 //   // useEffect(() => console.log("allCustomTasks: ", allCustomTasks), [allCustomTasks])
-
 //   useEffect(() => () => console.log('GroupOfCheckboxes unmounting!'), [])
-
 //   // Effect to conditionally bring in entry and populate fields
 //   useEffect(() => {
 //     if (!isDetailsMode || !homeId) return
-    
 //     let isMounted = true 
 //     const getDetails = async () => {
 //       if (!isMounted) return
-
 //       try {
 //         let customItemValuesForReset = {}
-
 //         // fetch details to call 'setCustomItems'
 //         let homeDetailsRes = await fetch(detailsUrl)
 //         let homeDetails = await homeDetailsRes.json()
-
 //         // function to find the value of an input field, no matter how nested the name is.
 //         // breaks nested input names down by dot notation, but works for non-nested input values as well.
 //         const findValInDetails = (name) => name?.split('.')?.reduce((curVal, curKey) => curVal && curVal[curKey], homeDetails)
-
 //         // make sure items that fall outside of the checkbox group's 
 //         // "defaultCheckboxNames" - ie. they were added by the user -  become a part of 
 //         // the 'customItems' state array sitting in the component.
 //         let customItemsToSet = Object.keys(homeDetails[groupName])
 //           .filter(key => !defaultCheckboxNames?.includes(key))
 //           .map(key => {return { name: `${groupName}.${key}`, isCustomItem: true }})
-
 //         setCustomItems(customItemsToSet)
-
 //         customItemsToSet.forEach(({ name }) => {
 //           console.log(`setting custom item ${name} to ${findValInDetails(name)}`)
 //           setValue(name, findValInDetails(name))
 //           customItemValuesForReset[name] = findValInDetails(name)
 //         })
-
 //         setResetValues(prevState => {return { ...prevState, ...customItemValuesForReset }})
-
 //         console.log('customTasks: ', homeDetails.customTasks)
 //         setAllCustomTasks(homeDetails.customTasks)
-
-
 //       }
 //       catch(err) {
 //         console.log(err)
 //         alert("There as an error loading your home's items. We're working on it as fast as we can.")
 //       }   
 //     }
-
 //     getDetails()
-
 //     return () => isMounted = false
-
 //   }, [detailsUrl, homeId])
-  
 //   // declare checkbox names such that their data ends up in an object, 
 //   // accessible with the name of the parent <GroupOfCheckboxes />
 //   const DefaultCheckbox = ({ readOnly, name, ...rest }) => <ComplexInput 
@@ -223,13 +178,11 @@ const GroupOfInputs = ({
 //     {...modeAndView}
 //     {...rest} 
 //   />
-
 //   const DefaultCheckboxAndTasks = (rest) => {
 //     const [editedTask, setEditedTask] = useState()
 //     const [editedFrequency, setEditedFrequency] = useState()
 //     const isBoxChecked = watch(rest.name)
 //     const itemName = makeItemName(rest.name)
-
 //     return <Fragment key={rest.index}>
 //       <DefaultCheckbox {...rest} name={rest.name} /> 
 //       {isBoxChecked && 
@@ -269,11 +222,9 @@ const GroupOfInputs = ({
 //       }
 //     </Fragment>
 //   }
-
 //   const CustomItemCheckbox = ({ wrapperProps, name, ...rest }) => {
 //     const [editedItem, setEditedItem] = useState()
 //     const itemName = makeItemName(name)
-
 //     return <FlexSection gridColumn="1/2" {...wrapperProps}>
 //       <DefaultCheckbox {...rest} name={name} />
 //       <FlexSection>
@@ -304,13 +255,11 @@ const GroupOfInputs = ({
 //       </FlexSection>
 //     </FlexSection>
 //   }
-
 //   const CustomCheckboxAndTasks = (rest) => {
 //     const [editedTask, setEditedTask] = useState()
 //     const [editedFrequency, setEditedFrequency] = useState()
 //     const isBoxChecked = watch(rest.name)
 //     const itemName = makeItemName(rest.name)
-
 //     return <Fragment key={rest.index}>
 //       <CustomItemCheckbox {...rest} name={rest.name} /> 
 //       {isBoxChecked && 
@@ -346,12 +295,10 @@ const GroupOfInputs = ({
 //       }
 //     </Fragment>
 //   }
-
 //   const AddCustomItemModal = () => {
 //     const [newItem, setNewItem] = useState()
 //     const [newTask, setNewTask] = useState()
 //     const [newFrequency, setNewFrequency] = useState()
-
 //     return <CustomItemModal 
 //       modalContent={<>
 //         <p>New item</p>
@@ -366,12 +313,10 @@ const GroupOfInputs = ({
 //       }}
 //     />
 //   }
-
 //   const AddCustomTaskModal = () => {
 //     const [newItem, setNewItem] = useState(allItems[0].name)
 //     const [newTask, setNewTask] = useState()
 //     const [newFrequency, setNewFrequency] = useState()
-
 //     return <CustomItemModal 
 //       confirmPrompt="add task"
 //       buttonText="add your own task"
@@ -395,13 +340,11 @@ const GroupOfInputs = ({
 //       }}
 //     />
 //   }
-
 //   const CheckAllButton = () => (
 //     <Button text onClick={() => allItems.forEach(({ name }) => setValue(name, true))}>
 //       <AddIcon sm />select all
 //     </Button>
 //   )
-  
 //   // - - - - - - - RETURN JSX - - - - - - - - //
 //   return (isAddMode || areDetailsLoaded) && <>
 //     <GridSection fullWidth {...props}>
@@ -419,33 +362,33 @@ const GroupOfInputs = ({
 //         <ComplexInput name={`customTasks.${index}.frequency`} labelHidden type="hidden" value={task.frequency} {...formTools} {...modeAndView} />
 //       </Fragment>
 //     )}
-    
 //     {isAddingOrEditing && <AddCustomItemModal />}
 //     {isAddingOrEditing && <AddCustomTaskModal />}
 //     {isAddingOrEditing && <CheckAllButton />}
 //   </>
 // }
 
-const SuperFormSelect = ({ options, name, ...props }) => { 
+
+const SuperFormSelect = ({
+  options,
+  name,
+  ...props
+}) => {
   // *SuperFormSelect needs to have "isCustomComponent" set to true.*
-  const allProps = {
-    ...props.register(name, props.registerOptions), 
+  const allProps = { ...props.register(name, props.registerOptions),
     ...props,
     name: name,
     id: name
-  }
-  
-  if (props.readOnly) return <Input {...allProps} />
+  };
+  if (props.readOnly) return /*#__PURE__*/React.createElement(Input, allProps);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select, allProps, options && options.map(({
+    value,
+    optionText
+  }) => /*#__PURE__*/React.createElement("option", {
+    value: value,
+    key: value
+  }, optionText || value))));
+};
 
-  return <>
-    <Select {...allProps}>
-      {options && options.map(({ value, optionText }) => <option value={value} key={value}>{optionText || value}</option> )}
-    </Select>
-  </>
-}
-
-export { 
-  GroupOfInputs, 
-  //GroupOfCheckboxes, 
-  SuperFormSelect 
-}
+export { GroupOfInputs, //GroupOfCheckboxes, 
+SuperFormSelect };
