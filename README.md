@@ -60,6 +60,7 @@ react-hook-superform uses a number of open source projects:
 - [React](https://reactjs.org/) - "A JavaScript library for building user interfaces"
 - [react-loading-skeleton](https://www.npmjs.com/package/react-loading-skeleton) - "Make beautiful, animated loading skeletons that automatically adapt to your app."
 - [styled-components](https://styled-components.com/) - "Visual primitives for the component age."
+- [react-datetime-picker](https://www.npmjs.com/package/react-datetime-picker) - "A datetime picker for your React app."
 
 ## License
 
