@@ -6,7 +6,7 @@ import { Input, FlexSection, EyeIcon, EyeSlashIcon } from './resources'
 
 const ToggleVisibleInput = props => {
   const [inputTextVisible, setInputTextVisible] = useState(props.startVisible || false)
-  const toggleInputTextVisible = () => setInputTextVisible(!inputTextVisible)
+  const toggleInputTextVisible = () => setInputTextVisible(prevState => !prevState)
   
   return <FlexSection fullWidth {...props.wrapperProps}>
     <Input 

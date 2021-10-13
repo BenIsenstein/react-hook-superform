@@ -1,19 +1,6 @@
-import React, { useEffect } from 'react'
-
+import React from 'react'
 import { Label, Textarea, Input, FlexSection, Error } from './resources'
 import Skeleton from 'react-loading-skeleton'
-
-/* 
-other props might include:
-- labelText="Description longer than name." 
-- as={CustomComponent} | as='div'
-- type='hidden' | type='file'
-- toggleVisible
-- maxLength
-- detailedPage
-- noFullWidth
-- readOnly
-*/
 
 const ComplexInput = ({ 
   name, 
@@ -28,15 +15,6 @@ const ComplexInput = ({
   }) => {
   const isCheckbox = type === 'checkbox'
   const isNumber = type === 'number'
-
-  
-  useEffect(() => {
-    // statement to choose which inputs to see unmounting announcement for
-    if (!["homeItems.Air Conditioner", 'address'].includes(name)) return 
-     
-    return () => console.log(`ComplexInput with name ${name} unmounted!`)
-
-  }, [])
 
   // ensuring the wheel behaviour is disabled on number inputs
   // const registerMethods = !isCustomComponent && register && register(name, !isCheckbox && props.registerOptions) // only apply registerOptions if it isn't a checkbox. 
@@ -60,7 +38,7 @@ const ComplexInput = ({
   
       {props.isAddMode || props.areDetailsLoaded || isCustomComponent
         ? <>
-        {!props.labelHidden && (props.isAddMode || props.areDetailsLoaded) &&                                         // label can be hidden with labelHidden. 
+        {!props.labelHidden && (props.isAddMode || props.areDetailsLoaded) &&                         // label can be hidden with labelHidden. 
           <Label htmlFor={name || props.labelText} {...isCheckbox && {margin: '0'}} {...labelProps}>
             {props.labelText || name}
           </Label>

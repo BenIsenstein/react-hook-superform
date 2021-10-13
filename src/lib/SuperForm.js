@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext, useMemo } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
-//import UserContext from '../../UserContext'
 import { PencilIcon, Form, FormSectionTitle, Button, FlexSection } from './resources'
 import { isDateInput } from './functions'
 import { GroupOfInputs } from '.'
@@ -62,16 +61,16 @@ const inputs = [
 - - - - - - - - - - - - - - - - - - - - - - - - -
 
 - ...props | object | default: undefined | any props not recognized by the component are fed to the outermost <FlexSection>
-- BeforeTemplate | JSX | default: undefined |
-- AfterTemplate | JSX | default: undefined  |
-- BeforeSubmitButton | JSX | default: undefined |
-- BeforeSubmitButtonIfEditView | JSX | default: undefined |
-- formProps | object | default: undefined | all props fed directly to the main <Form> element
-- onSubmit | func | default: alert('No onSubmit given to <FormTemplate />') | called on submit event of the main <Form /> element
-- formMode | str | default: 'add' | can be either 'add' or 'details'
-- titleText | str | default: null | Appears just below the back button, above the inputs
-- titleTag | str, React component | default: <P></P> | Can make the title of the template into any native html element, or a React component.
-- openInEditView | bool | default: undefined | can choose to open a details mode form in editable view.
+BeforeTemplate | JSX | default: undefined |
+AfterTemplate | JSX | default: undefined  |
+BeforeSubmitButton | JSX | default: undefined |
+BeforeSubmitButtonIfEditView | JSX | default: undefined |
+formProps | object | default: undefined | all props fed directly to the main <Form> element
+onSubmit | func | default: alert('No onSubmit given to <FormTemplate />') | called on submit event of the main <Form /> element
+formMode | str | default: 'add' | can be either 'add' or 'details'
+titleText | str | default: null | Appears just below the back button, above the inputs
+titleTag | str, React component | default: <P></P> | Can make the title of the template into any native html element, or a React component.
+openInEditView | bool | default: undefined | can choose to open a details mode form in editable view.
 
 - ADD MODE:
   *  addModeCancel | func | default: history.push('/') | a customizable function that fires on clicking the 'cancel' button. 
@@ -81,9 +80,9 @@ const inputs = [
   * cancelText | str | default: "Cancel" | right next to the 'submit' button. default onCick is to cancel edit view, or take user to homepage from add mode. Can have a custom "addModeCancel" function
   
 - DETAILS MODE:
-  * detailsUrl | str | default: undefined | is crucial to fetch info for the template dynamically
-  * displayOnly | bool | default: false | if true the PencilIcon disappears, meaning you can effectively have a read-only FlexSection 
-  * editViewCancel | func | default: undefined | function that can overide the cancel button onClick() in edit view of details form.
+  detailsUrl | str | default: undefined | is crucial to fetch info for the template dynamically
+  displayOnly | bool | default: false | if true the PencilIcon disappears, meaning you can effectively have a read-only FlexSection 
+  editViewCancel | func | default: undefined | function that can overide the cancel button onClick() in edit view of details form.
 */
 
 const SuperForm = ({ 
@@ -107,7 +106,7 @@ const SuperForm = ({
   const [resetValues, setResetValues] = useState({})
   //const userContext = useContext(UserContext)
   const history = useHistory()
-  const goHome = useMemo(() => () => history.push(`./${props.homeUrl || 'home'}`), [history])
+  const goHome = useMemo(() => () => history.push(`./${props.homeUrl || ''}`), [history])
   const resetForm = useMemo(() => () => {reset(resetValues); setViewMode('details')}, [reset, resetValues])
   // - - - -  Conditions measuring formMode + viewMode - - - -
   const isAddMode = formMode === 'add'
@@ -162,16 +161,12 @@ const SuperForm = ({
         for (let { name, ...input } of inputs) {
           // if the object contains a single input element:
           if (!['GroupOfInputs', 'GroupOfCheckboxes', 'StartAndEndDates'].includes(input?.asName)) {
-            console.log("input?.asName: ", input?.asName)
-            console.log(`setting ${name} to ${findValInDetails(name)}`)
             setValue(name, findValInDetails(name))
             valuesForReset[name] = findValInDetails(name)
           } 
           // if the object is a <GroupOfInputs />, <GroupOfCheckbxes /> or <StartAndEndDates /> with an array of inputs:
           else {
             input?.inputs?.forEach(({ name }) => {
-              console.log("input?.asName: ", input?.asName)
-              console.log(`setting ${name} to ${findValInDetails(name)}`)
               setValue(name, findValInDetails(name))
               valuesForReset[name] = findValInDetails(name)
             })
