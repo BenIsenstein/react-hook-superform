@@ -1,19 +1,8 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Label, Textarea, Input, FlexSection, Error } from './resources';
 import Skeleton from 'react-loading-skeleton';
-/* 
-other props might include:
-- labelText="Description longer than name." 
-- as={CustomComponent} | as='div'
-- type='hidden' | type='file'
-- toggleVisible
-- maxLength
-- detailedPage
-- noFullWidth
-- readOnly
-*/
 
 const ComplexInput = ({
   name,
@@ -27,12 +16,7 @@ const ComplexInput = ({
   ...props
 }) => {
   const isCheckbox = type === 'checkbox';
-  const isNumber = type === 'number';
-  useEffect(() => {
-    // statement to choose which inputs to see unmounting announcement for
-    if (!["homeItems.Air Conditioner", 'address'].includes(name)) return;
-    return () => console.log(`ComplexInput with name ${name} unmounted!`);
-  }, []); // ensuring the wheel behaviour is disabled on number inputs
+  const isNumber = type === 'number'; // ensuring the wheel behaviour is disabled on number inputs
   // const registerMethods = !isCustomComponent && register && register(name, !isCheckbox && props.registerOptions) // only apply registerOptions if it isn't a checkbox. 
   // const numberRegisterMethods = !isCustomComponent && register && {
   //   ...registerMethods,

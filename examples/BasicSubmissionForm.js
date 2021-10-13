@@ -1,4 +1,4 @@
-import SuperForm from 'react-hook-superform'
+import { SuperForm } from 'react-hook-superform'
 
 const BasicSubmissionForm = () => {
   const inputs = [{ name: 'username' }, { name: 'password' }, { name: 'email' }]

@@ -267,6 +267,8 @@ export default FormWithOneSelect
 
 `import { ToggleVisibleInput } from 'react-hook-superform'`
 
+An input field with the option to make input visible, for passwords and such.
+
 #### Props
 
 | Prop | Type | Default| Description |
