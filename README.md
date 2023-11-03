@@ -1,3 +1,9 @@
+# NOTE: this repo is no longer maintained
+
+This repo is being kept public as an archive of my early work. Install on npm and hack away, but this package is quite narrow in its utility and will lock you into the technologies with which it was built. Hindsight is 20/20 and while I'm happy to have a snapshot of my work after less than a year of programming, I wouldn't touch this with a ten-foot pole.
+
+- Ben
+
 # react-hook-superform
 
 *Harness the power of [react-hook-form](https://www.npmjs.com/package/react-hook-form) and create functional forms in React, FAST.*
